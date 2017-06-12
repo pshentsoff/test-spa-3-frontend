@@ -1,0 +1,25 @@
+<h1>
+    {{title}}
+</h1>
+
+{{obj|json}}
+
+<div class="row" *ngIf="errors">
+    <br>
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-5">
+        <div class="alert alert-danger" ng-if="errors">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <strong>Внимание!</strong> {{errors}}
+        </div>
+    </div>
+</div>
+
+
+<form #form="ngForm" (submit)="save(form.value)">
+    <div class="form-group">
+        <label for="">Название компании</label>
+        <input name="name" type="text" class="form-control" id="" placeholder="Название" [(ngModel)]="obj.name">
+    </div>
+
+    <button type="submit" class="btn btn-primary">{{id ? "Сохранить" : "Создать"}}</button>
+</form>
