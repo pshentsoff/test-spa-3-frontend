@@ -1,0 +1,45 @@
+<h1>
+    {{title}}
+</h1>
+
+{{obj|json}}
+
+<div class="row" *ngIf="errors">
+    <br>
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-5">
+        <div class="alert alert-danger" ng-if="errors">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <strong>Внимание!</strong> {{errors}}
+        </div>
+    </div>
+</div>
+
+
+<form #form="ngForm" (submit)="save(form.value)">
+    <div class="form-group">
+        <label for="">Название товара</label>
+        <input name="name" type="text" class="form-control" id="name" placeholder="Название" [(ngModel)]="obj.name">
+    </div>
+
+    <div class="form-group">
+        <label for="">Артикул</label>
+        <input name="code" type="text" class="form-control" id="code" placeholder="Артикул" [(ngModel)]="obj.code">
+    </div>
+
+    <div class="form-group">
+        <label for="">Цена</label>
+        <input name="price" type="text" class="form-control" id="price" placeholder="Цена" [(ngModel)]="obj.price">
+    </div>
+
+    <div class="form-group">
+        <label for="">Дата прайса</label>
+        <input name="price_date" type="text" class="form-control" id="price_date" placeholder="Дата прайса" [(ngModel)]="obj.price_date">
+    </div>
+
+    <div class="form-group">
+        <label for="">Поставщик</label>
+        <input name="suppliers_id" type="text" class="form-control" id="suppliers_id" placeholder="Поставщик" [(ngModel)]="obj.suppliers_id">
+    </div>
+
+    <button type="submit" class="btn btn-primary">{{id ? "Сохранить" : "Создать"}}</button>
+</form>

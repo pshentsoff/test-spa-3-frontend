@@ -1,0 +1,56 @@
+<h1>Товары</h1>
+<a routerLink="/goods/new" type="button" class="btn btn-info">
+    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Добавить
+</a>
+
+
+
+<div class="row" *ngIf="errors">
+    <br>
+    <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+        <div class="alert alert-danger" ng-if="errors">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <strong>Внимание!</strong> {{errors}}
+        </div>
+    </div>
+</div>
+
+<!--{{items|json}} -->
+
+<div class="row" *ngIf="items">
+    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Название</th>
+                    <th>Артикул</th>
+                    <th>Цена</th>
+                    <th>Дата прайса</th>
+                    <th>Поставщик</th>
+                    <th>Операции</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of items">
+                    <td>{{item.goods_id}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.code}}</td>
+                    <td>{{item.price}}</td>
+                    <td>{{item.price_date}}</td>
+                    <td>{{item.suppliers_id}}</td>
+                    <td>
+                        <a [routerLink]="['/goods', item.goods_id]" title="Редактировать">
+                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                        </a>
+
+                        <a href="javascript:void(0)" title="Удалить" (click)="remove(item)">
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                        </a>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
